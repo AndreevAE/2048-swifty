@@ -22,11 +22,12 @@ class GameController {
     }
     
     func startGame() {
+        self.board.clear()
         self.board.random()
         self.board.random()
     }
     
-    func swipe(to direction: SwipeDirection) -> Bool {
+    func swipe(to direction: SwipeDirection) {
         // Swipe cant realise if numbers dont move, no turn, need try another swipe
         var realized = false
         
@@ -45,9 +46,10 @@ class GameController {
         
         if realized {
             self.board.random()
+            if self.isEndGame() {
+                self.endGame()
+            }
         }
-        
-        return realized
     }
     
     private func isEndGame() -> Bool {
@@ -152,6 +154,6 @@ class GameController {
     }
     
     func endGame() {
-        
+        // TODO:
     }
 }

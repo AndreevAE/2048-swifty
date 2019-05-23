@@ -9,8 +9,8 @@
 import UIKit
 
 // TODO: SAVE BOARD ON RESTART APP (UserDefaults) !!!
+// TODO: fix appearance
 // TODO: add animations
-// TODO: add restart button
 
 class ViewController: UIViewController {
 
@@ -29,24 +29,24 @@ class ViewController: UIViewController {
         
         self.gameController.startGame()
     }
-
+    
+    @IBAction func onRestartGame(_ sender: UIButton) {
+        self.gameController.startGame()
+        self.gameBoardDataSource.update()
+    }
+    
     @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
-        print("swipe")
         switch gesture.direction {
         case .left:
-            print("left")
             self.gameController.swipe(to: .left)
             self.gameBoardDataSource.update()
         case .right:
-            print("right")
             self.gameController.swipe(to: .right)
             self.gameBoardDataSource.update()
         case .up:
-            print("up")
             self.gameController.swipe(to: .up)
             self.gameBoardDataSource.update()
         case .down:
-            print("down")
             self.gameController.swipe(to: .down)
             self.gameBoardDataSource.update()
         default:
@@ -78,8 +78,8 @@ private extension ViewController {
     }
     
     func setupView() {
-        self.view.backgroundColor = UIColor.yellow
-        self.gameBoardCollectionView.backgroundColor = UIColor.green
+        self.view.backgroundColor = UIColor.background
+        self.gameBoardCollectionView.backgroundColor = UIColor.clear
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
@@ -87,9 +87,6 @@ private extension ViewController {
         let layout = UICollectionViewFlowLayout()
         // TODO: normalize item size calculating
         let itemSize = ((screenWidth - 10 * 3 - 20 * 2) / 4)
-        print("ScreenSize \(screenSize)")
-        print("ScreenWidth \(screenWidth)")
-        print("ItemSize \(itemSize)")
         layout.itemSize = CGSize(width: itemSize, height: itemSize)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10

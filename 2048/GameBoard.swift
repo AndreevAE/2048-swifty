@@ -19,6 +19,11 @@ class GameBoard {
         self.board = [Int](repeating: 0, count: size * size)
     }
     
+    func clear() {
+        self.board.removeAll(keepingCapacity: true)
+        self.board = [Int](repeating: 0, count: size * size)
+    }
+    
     func random() {
         // 2 - 50%, 4 - 50% in free cell of board
         let randomNumber = [2, 4].randomElement() ?? 2

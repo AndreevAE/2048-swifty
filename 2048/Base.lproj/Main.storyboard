@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-rQ-6x7">
                                 <rect key="frame" x="20" y="266" width="374" height="374"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TZ8-rQ-6x7" secondAttribute="height" multiplier="1:1" id="qPy-ZV-hI9"/>
@@ -57,11 +57,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saI-3o-xJO">
+                                <rect key="frame" x="128" y="832" width="158" height="30"/>
+                                <state key="normal" title="Попробовать еще раз"/>
+                                <connections>
+                                    <action selector="onRestartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lrS-9x-LM9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TZ8-rQ-6x7" secondAttribute="trailing" constant="20" id="3kd-UN-JbR"/>
+                            <constraint firstItem="saI-3o-xJO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TZ8-rQ-6x7" secondAttribute="bottom" constant="16" id="8hU-zH-zsD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="saI-3o-xJO" secondAttribute="bottom" id="AK3-EH-4qq"/>
+                            <constraint firstItem="saI-3o-xJO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="C73-y2-kL9"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="al9-Fl-Iem"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="e05-8j-gSq"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jpb-Vi-liV"/>

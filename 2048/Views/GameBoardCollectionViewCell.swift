@@ -23,8 +23,11 @@ class GameBoardCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(number: Int, numberColor: UIColor, backgroundColor: UIColor) {
-        // TODO: not show "0"
-        self.numberLabel.text = "\(number)"
+        if number != 0 {
+            self.numberLabel.text = "\(number)"
+        } else {
+            self.numberLabel.text = ""
+        }
         self.numberLabel.textColor = numberColor
         self.backgroundColor = backgroundColor
     }

@@ -13,17 +13,17 @@ class GameBoardDataSource: NSObject {
     
     let numberColorDict: [Int: UIColor] = [
         0: UIColor.cellBackground_empty,
-        1: UIColor.cellBackground_2,
-        2: UIColor.cellBackground_4,
-        3: UIColor.cellBackground_8,
-        4: UIColor.cellBackground_16,
-        5: UIColor.cellBackground_32,
-        6: UIColor.cellBackground_64,
-        7: UIColor.cellBackground_128,
-        8: UIColor.cellBackground_256,
-        9: UIColor.cellBackground_512,
-        10: UIColor.cellBackground_1024,
-        11: UIColor.cellBackground_2048
+        2: UIColor.cellBackground_2,
+        4: UIColor.cellBackground_4,
+        8: UIColor.cellBackground_8,
+        16: UIColor.cellBackground_16,
+        32: UIColor.cellBackground_32,
+        64: UIColor.cellBackground_64,
+        128: UIColor.cellBackground_128,
+        256: UIColor.cellBackground_256,
+        512: UIColor.cellBackground_512,
+        1024: UIColor.cellBackground_1024,
+        2048: UIColor.cellBackground_2048
     ]
     
     private var collectionView: UICollectionView
