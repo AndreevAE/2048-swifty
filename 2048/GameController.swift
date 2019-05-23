@@ -43,6 +43,10 @@ class GameController {
             fatalError("Not Presented Swipe Direction Initialized")
         }
         
+        if realized {
+            self.board.random()
+        }
+        
         return realized
     }
     
@@ -127,15 +131,17 @@ class GameController {
         // 1. remove zeros
         editedRow = editedRow.filter { $0 != 0 }
         
-        // 2. check and 'concat' numbers
-        for i in 0..<editedRow.count - 1 {
-            if editedRow[i] == editedRow[i+1] {
-                editedRow[i] *= 2
-                editedRow[i+1] = -1
+        if !editedRow.isEmpty {
+            // 2. check and 'concat' numbers
+            for i in 0..<editedRow.count - 1 {
+                if editedRow[i] == editedRow[i+1] {
+                    editedRow[i] *= 2
+                    editedRow[i+1] = -1
+                }
             }
+            
+            editedRow = editedRow.filter { $0 != -1 }
         }
-        
-        editedRow = editedRow.filter { $0 != -1 }
         
         // 3. advance needed zeros
         while editedRow.count != initCount {

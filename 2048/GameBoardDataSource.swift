@@ -34,6 +34,11 @@ class GameBoardDataSource: NSObject {
         self.board = board
     }
     
+    // TODO: optimaze update and reload?
+    func update() {
+        self.collectionView.reloadData()
+    }
+    
     func updateBoard(_ board: GameBoard) {
         self.board = board
         // TODO: optimize reload?

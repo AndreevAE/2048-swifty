@@ -18,9 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-rQ-6x7">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-rQ-6x7">
                                 <rect key="frame" x="20" y="266" width="374" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TZ8-rQ-6x7" secondAttribute="height" multiplier="1:1" id="qPy-ZV-hI9"/>
                                 </constraints>
@@ -58,6 +59,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TZ8-rQ-6x7" secondAttribute="trailing" constant="20" id="3kd-UN-JbR"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="al9-Fl-Iem"/>

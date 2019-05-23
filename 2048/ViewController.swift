@@ -8,6 +8,10 @@
 
 import UIKit
 
+// TODO: SAVE BOARD ON RESTART APP (UserDefaults) !!!
+// TODO: add animations
+// TODO: add restart button
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var gameBoardCollectionView: UICollectionView!
@@ -21,15 +25,57 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.setupView()
         self.setupDataSource()
+        self.addSwipeGesture()
         
         self.gameController.startGame()
     }
 
-
+    @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
+        print("swipe")
+        switch gesture.direction {
+        case .left:
+            print("left")
+            self.gameController.swipe(to: .left)
+            self.gameBoardDataSource.update()
+        case .right:
+            print("right")
+            self.gameController.swipe(to: .right)
+            self.gameBoardDataSource.update()
+        case .up:
+            print("up")
+            self.gameController.swipe(to: .up)
+            self.gameBoardDataSource.update()
+        case .down:
+            print("down")
+            self.gameController.swipe(to: .down)
+            self.gameBoardDataSource.update()
+        default:
+            print(gesture.direction)
+        }
+    }
+    
 }
 
 
 private extension ViewController {
+    
+    func addSwipeGesture() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
     
     func setupView() {
         self.view.backgroundColor = UIColor.yellow
