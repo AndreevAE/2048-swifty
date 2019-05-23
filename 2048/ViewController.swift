@@ -12,13 +12,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var gameBoardCollectionView: UICollectionView!
     
+    private var gameBoard: GameBoard!
     private var gameBoardDataSource: GameBoardDataSource!
+    private var gameController: GameController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.setupView()
         self.setupDataSource()
+        
+        self.gameController.startGame()
     }
 
 
@@ -47,7 +51,9 @@ private extension ViewController {
     }
     
     func setupDataSource() {
-        self.gameBoardDataSource = GameBoardDataSource(collectionView: self.gameBoardCollectionView)
+        self.gameBoard = GameBoard()
+        self.gameController = GameController(board: self.gameBoard)
+        self.gameBoardDataSource = GameBoardDataSource(collectionView: self.gameBoardCollectionView, board: self.gameBoard)
         self.gameBoardDataSource.configure()
     }
 }

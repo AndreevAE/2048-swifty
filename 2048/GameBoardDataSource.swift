@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class GameBoardDataSource: NSObject {
-    // TODO: random??
     
     let numberColorDict: [Int: UIColor] = [
         0: UIColor.cellBackground_empty,
@@ -28,14 +27,14 @@ class GameBoardDataSource: NSObject {
     ]
     
     private var collectionView: UICollectionView
-    private var board: [Int] // TODO: Int or Object Number
+    private var board: GameBoard
     
-    init(collectionView: UICollectionView) {
+    init(collectionView: UICollectionView, board: GameBoard) {
         self.collectionView = collectionView
-        self.board = [Int](repeating: 0, count: 16)
+        self.board = board
     }
     
-    func updateBoard(_ board: [Int]) {
+    func updateBoard(_ board: GameBoard) {
         self.board = board
         // TODO: optimize reload?
         self.collectionView.reloadData()

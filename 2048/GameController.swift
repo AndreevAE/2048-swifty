@@ -17,8 +17,8 @@ class GameController {
     
     private var board: GameBoard
     
-    init() {
-        self.board = GameBoard()
+    init(board: GameBoard) {
+        self.board = board
     }
     
     func startGame() {
@@ -64,9 +64,9 @@ class GameController {
         var realized = false
         
         for i in 0..<4 {
-            let rolledUpRow = rollUp(row: self.board[i])
-            if self.board[i] != rolledUpRow {
-                self.board[i] = rolledUpRow
+            let rolledUpRow = rollUp(row: self.board.row(i))
+            if self.board.row(i) != rolledUpRow {
+                self.board.row(i, newValue: rolledUpRow)
                 realized = true
             }
         }
@@ -78,10 +78,10 @@ class GameController {
         var realized = false
         
         for i in 0..<4 {
-            let reversedRow: [Int] = self.board[i].reversed()
+            let reversedRow: [Int] = self.board.row(i).reversed()
             let rolledUpRow = rollUp(row: reversedRow)
             if reversedRow != rolledUpRow {
-                self.board[i] = rolledUpRow.reversed()
+                self.board.row(i, newValue: rolledUpRow.reversed())
                 realized = true
             }
         }

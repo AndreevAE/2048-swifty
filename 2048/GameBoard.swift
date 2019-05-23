@@ -64,25 +64,33 @@ class GameBoard {
         return row >= 0 && row < size && column >= 0 && column < size
     }
     
-    // TODO: direct subscript to board [Int] ??
-    
-    subscript(row: Int) -> [Int] {
+    subscript(cell: Int) -> Int {
         get {
-            assert(indexIsValid(row: row, column: 0), "Index out of range")
-            
-            var column = [Int]()
-            
-            for j in 0..<self.size {
-                column.append(self.board[(row * self.size) + j])
-            }
-            return column
+            assert(indexIsValid(row: cell / 4, column: cell % 4), "Index out of range")
+            return self.board[cell]
         }
         set(newValue) {
-            assert(indexIsValid(row: row, column: 0), "Index out of range")
-            
-            for j in 0..<self.size {
-                self.board[(row * self.size) + j] = newValue[j]
-            }
+            assert(indexIsValid(row: cell / 4, column: cell % 4), "Index out of range")
+            self.board[cell] = newValue
+        }
+    }
+    
+    func row(_ row: Int) -> [Int] {
+        assert(indexIsValid(row: row, column: 0), "Index out of range")
+        
+        var column = [Int]()
+        
+        for j in 0..<self.size {
+            column.append(self.board[(row * self.size) + j])
+        }
+        return column
+    }
+    
+    func row(_ row: Int, newValue: [Int]) {
+        assert(indexIsValid(row: row, column: 0), "Index out of range")
+        
+        for j in 0..<self.size {
+            self.board[(row * self.size) + j] = newValue[j]
         }
     }
     
