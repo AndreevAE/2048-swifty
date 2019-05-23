@@ -22,20 +22,12 @@ class GameController {
     }
     
     func startGame() {
-        
-    }
-    
-    func restartGame() {
-        
-    }
-    
-    func randomNewNumber() {
-        // TODO: 2 - 50%, 4 - 50% in free cell of board
-        
+        self.board.random()
+        self.board.random()
     }
     
     func swipe(to direction: SwipeDirection) -> Bool {
-        // Swipe cant realise if numbers dont move, no turn
+        // Swipe cant realise if numbers dont move, no turn, need try another swipe
         var realized = false
         
         switch direction {
@@ -47,11 +39,25 @@ class GameController {
             realized = swipeToUp()
         case .down:
             realized = swipeToDown()
-        default:
+        @unknown default:
             fatalError("Not Presented Swipe Direction Initialized")
         }
         
         return realized
+    }
+    
+    private func isEndGame() -> Bool {
+        // if board has 0
+        if board.hasEmptyCells() {
+            return false
+        }
+        
+        // or adjacent numbers are equal (and can roll up)
+        if board.hasAdjacentEqualNumbers() {
+            return false
+        }
+        
+        return true
     }
     
     private func swipeToLeft() -> Bool {
@@ -114,9 +120,29 @@ class GameController {
     
     private func rollUp(row: [Int]) -> [Int] {
         // Always to left, only one row
-        // TODO: calculate rolling up row
+        let initCount = row.count
         
-        return row
+        var editedRow = row
+        
+        // 1. remove zeros
+        editedRow = editedRow.filter { $0 != 0 }
+        
+        // 2. check and 'concat' numbers
+        for i in 0..<editedRow.count - 1 {
+            if editedRow[i] == editedRow[i+1] {
+                editedRow[i] *= 2
+                editedRow[i+1] = -1
+            }
+        }
+        
+        editedRow = editedRow.filter { $0 != -1 }
+        
+        // 3. advance needed zeros
+        while editedRow.count != initCount {
+            editedRow.append(0)
+        }
+        
+        return editedRow
     }
     
     func endGame() {

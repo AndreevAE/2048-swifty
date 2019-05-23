@@ -10,6 +10,7 @@ import Foundation
 
 
 class GameBoard {
+    
     let size: Int
     private var board: [Int]
     
@@ -17,6 +18,47 @@ class GameBoard {
         self.size = size
         self.board = [Int](repeating: 0, count: size * size)
     }
+    
+    func random() {
+        // 2 - 50%, 4 - 50% in free cell of board
+        let randomNumber = [2, 4].randomElement() ?? 2
+        
+        let boardEmptyPositions = self.board.enumerated().filter { $0.element == 0 }.map { $0.offset }
+        let randomPosition = boardEmptyPositions.randomElement()
+        
+        if let position = randomPosition {
+            self.board[position] = randomNumber
+        }
+    }
+    
+    func hasEmptyCells() -> Bool {
+        return board.contains(0)
+    }
+    
+    // TODO: move this logic to GameController?
+    func hasAdjacentEqualNumbers() -> Bool {
+        // check rows:
+        for i in 0..<self.size {
+            for j in 0..<self.size - 1 {
+                if self.board[(i * self.size) + j] == self.board[(i * self.size) + j + 1] {
+                    return true
+                }
+            }
+        }
+        
+        // check columns:
+        for j in 0..<self.size {
+            for i in 0..<self.size - 1 {
+                if self.board[(i * self.size) + j] == self.board[((i + 1) * self.size) + j] {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
+    // MARK: Subscript funcs
     
     func indexIsValid(row: Int, column: Int) -> Bool {
         return row >= 0 && row < size && column >= 0 && column < size
