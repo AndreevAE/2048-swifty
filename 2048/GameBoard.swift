@@ -9,15 +9,32 @@
 import Foundation
 
 
-class GameBoard {
+class GameBoard: NSObject, NSCoding {
     
     let size: Int
     private var board: [Int]
+    
+    // MARK: initializers
     
     init(size: Int = 4) {
         self.size = size
         self.board = [Int](repeating: 0, count: size * size)
     }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.size, forKey: "GameBoard.size")
+        aCoder.encode(self.board, forKey: "GameBoard.board")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.size = aDecoder.decodeInteger(forKey: "GameBoard.size")
+        guard let board = aDecoder.decodeObject(forKey: "GameBoard.board") as? [Int] else {
+            return nil
+        }
+        self.board = board
+    }
+    
+    // MARK: Board Logic
     
     func clear() {
         self.board.removeAll(keepingCapacity: true)
@@ -128,5 +145,3 @@ class GameBoard {
         }
     }
 }
-
-

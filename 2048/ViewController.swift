@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: SAVE BOARD ON RESTART APP (UserDefaults) !!!
 // TODO: add animations
 
 class ViewController: UIViewController {
@@ -19,6 +18,9 @@ class ViewController: UIViewController {
     private var gameBoard: GameBoard!
     private var gameBoardDataSource: GameBoardDataSource!
     private var gameController: GameController!
+    
+    private let gameBoardIdentifier = "GameBoard"
+    private var wasLoading: Bool = false
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -31,12 +33,16 @@ class ViewController: UIViewController {
         self.setupDataSource()
         self.addSwipeGesture()
         
-        self.gameController.startGame()
+        if !wasLoading {
+            self.gameController.startGame()
+        }
     }
     
     @IBAction func onRestartGame(_ sender: UIButton) {
         self.gameController.startGame()
         self.gameBoardDataSource.update()
+        
+        self.saveGameBoard()
     }
     
     @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
@@ -56,6 +62,8 @@ class ViewController: UIViewController {
         default:
             print(gesture.direction)
         }
+        
+        self.saveGameBoard()
     }
     
 }
@@ -104,10 +112,34 @@ private extension ViewController {
     }
     
     func setupDataSource() {
-        // TODO: GameBoard from UserDefaults
-        self.gameBoard = GameBoard()
+        self.wasLoading = self.loadGameBoard()
+        
         self.gameController = GameController(board: self.gameBoard)
         self.gameBoardDataSource = GameBoardDataSource(collectionView: self.gameBoardCollectionView, board: self.gameBoard)
         self.gameBoardDataSource.configure()
+    }
+    
+    func loadGameBoard() -> Bool {
+        guard let gameBoardData = UserDefaults.standard.object(forKey: self.gameBoardIdentifier) as? NSData else {
+            self.gameBoard = GameBoard()
+            return false
+        }
+
+        guard let board = NSKeyedUnarchiver.unarchiveObject(with: gameBoardData as Data) as? GameBoard else {
+            self.gameBoard = GameBoard()
+            return false
+        }
+
+        self.gameBoard = board
+        return true
+    }
+
+    func saveGameBoard() {
+        let defaults = UserDefaults.standard
+        
+        let gameBoardData = NSKeyedArchiver.archivedData(withRootObject: self.gameBoard as Any)
+
+        defaults.set(gameBoardData, forKey: self.gameBoardIdentifier)
+        defaults.synchronize()
     }
 }
