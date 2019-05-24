@@ -40,7 +40,6 @@ class GameBoard {
         return board.contains(0)
     }
     
-    // TODO: move this logic to GameController?
     func hasAdjacentEqualNumbers() -> Bool {
         // check rows:
         for i in 0..<self.size {

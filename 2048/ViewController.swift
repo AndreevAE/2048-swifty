@@ -9,20 +9,24 @@
 import UIKit
 
 // TODO: SAVE BOARD ON RESTART APP (UserDefaults) !!!
-// TODO: fix appearance
 // TODO: add animations
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var gameBoardCollectionView: UICollectionView!
+    @IBOutlet weak var restartButton: UIButton!
     
     private var gameBoard: GameBoard!
     private var gameBoardDataSource: GameBoardDataSource!
     private var gameController: GameController!
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         self.setupView()
         self.setupDataSource()
         self.addSwipeGesture()
@@ -81,6 +85,12 @@ private extension ViewController {
         self.view.backgroundColor = UIColor.background
         self.gameBoardCollectionView.backgroundColor = UIColor.clear
         
+        self.restartButton.layer.cornerRadius = 10.0
+        self.restartButton.layer.shadowRadius = 5.0
+        self.restartButton.layer.shadowOpacity = 0.5
+        self.restartButton.layer.shadowColor = UIColor.black.cgColor
+        self.restartButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         
@@ -94,6 +104,7 @@ private extension ViewController {
     }
     
     func setupDataSource() {
+        // TODO: GameBoard from UserDefaults
         self.gameBoard = GameBoard()
         self.gameController = GameController(board: self.gameBoard)
         self.gameBoardDataSource = GameBoardDataSource(collectionView: self.gameBoardCollectionView, board: self.gameBoard)

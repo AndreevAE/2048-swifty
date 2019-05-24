@@ -39,12 +39,6 @@ class GameBoardDataSource: NSObject {
         self.collectionView.reloadData()
     }
     
-    func updateBoard(_ board: GameBoard) {
-        self.board = board
-        // TODO: optimize reload?
-        self.collectionView.reloadData()
-    }
-    
     func configure() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -54,7 +48,7 @@ class GameBoardDataSource: NSObject {
 extension GameBoardDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 16
+        return self.board.size * self.board.size
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

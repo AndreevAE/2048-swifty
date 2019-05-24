@@ -39,17 +39,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2048" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMb-LQ-xmm">
-                                                    <rect key="frame" x="2" y="14.5" width="46.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2048" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="fMb-LQ-xmm">
+                                                    <rect key="frame" x="0.0" y="3.5" width="50" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fMb-LQ-xmm" secondAttribute="trailing" id="fb2-El-tem"/>
                                             <constraint firstItem="fMb-LQ-xmm" firstAttribute="centerY" secondItem="GtD-Dc-u8j" secondAttribute="centerY" id="gA2-WD-694"/>
                                             <constraint firstItem="fMb-LQ-xmm" firstAttribute="centerX" secondItem="GtD-Dc-u8j" secondAttribute="centerX" id="u0n-pt-8WP"/>
+                                            <constraint firstItem="fMb-LQ-xmm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GtD-Dc-u8j" secondAttribute="leading" id="x3W-OF-oRq"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="numberLabel" destination="fMb-LQ-xmm" id="dOx-Q0-Vym"/>
@@ -58,28 +60,37 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saI-3o-xJO">
-                                <rect key="frame" x="128" y="832" width="158" height="30"/>
-                                <state key="normal" title="Попробовать еще раз"/>
+                                <rect key="frame" x="102" y="804" width="210" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="saI-3o-xJO" secondAttribute="height" multiplier="105:19" id="KDR-JX-k0y"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="YHn-5i-1nm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Попробовать еще раз">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="onRestartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lrS-9x-LM9"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TZ8-rQ-6x7" secondAttribute="trailing" constant="20" id="3kd-UN-JbR"/>
-                            <constraint firstItem="saI-3o-xJO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TZ8-rQ-6x7" secondAttribute="bottom" constant="16" id="8hU-zH-zsD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="saI-3o-xJO" secondAttribute="bottom" id="AK3-EH-4qq"/>
-                            <constraint firstItem="saI-3o-xJO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="C73-y2-kL9"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="al9-Fl-Iem"/>
+                            <constraint firstItem="saI-3o-xJO" firstAttribute="centerX" secondItem="TZ8-rQ-6x7" secondAttribute="centerX" id="dJY-mN-dP9"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="e05-8j-gSq"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jpb-Vi-liV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="saI-3o-xJO" secondAttribute="bottom" constant="20" id="sxr-Fi-ioV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="gameBoardCollectionView" destination="TZ8-rQ-6x7" id="6RN-2n-KQv"/>
+                        <outlet property="restartButton" destination="saI-3o-xJO" id="9g5-wR-kbZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
