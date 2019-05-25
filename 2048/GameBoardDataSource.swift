@@ -40,8 +40,6 @@ class GameBoardDataSource: NSObject {
         self.swipeDirection = swipeDirection
         
         for cell in self.collectionView.visibleCells {
-            var height: CGFloat = 0
-            var width: CGFloat = 0
             
             UIView.animate(withDuration: 0.2, animations: { [weak self] in
                 var cellFrame = cell.frame
@@ -50,19 +48,15 @@ class GameBoardDataSource: NSObject {
                     switch direction {
                     case .left:
                         cellFrame.origin.x -= cellFrame.size.width
-                        width = cellFrame.size.width
                         cellFrame.size.width = 0
                     case .right:
                         cellFrame.origin.x += cellFrame.size.width
-                        width = cellFrame.size.width
                         cellFrame.size.width = 0
                     case .up:
                         cellFrame.origin.y -= cellFrame.size.height
-                        height = cellFrame.size.height
                         cellFrame.size.height = 0
                     case .down:
                         cellFrame.origin.y += cellFrame.size.height
-                        height = cellFrame.size.height
                         cellFrame.size.height = 0
                     case .none:
                         break
@@ -72,28 +66,7 @@ class GameBoardDataSource: NSObject {
                 }
 
                 cell.frame = cellFrame
-            }) { finished in
-                var cellFrame = cell.frame
-
-                switch self.swipeDirection {
-                case .left:
-                    cellFrame.size.width = width
-                    cellFrame.origin.x += width
-                case .right:
-                    cellFrame.size.width = width
-                    cellFrame.origin.x -= width
-                case .up:
-                    cellFrame.size.height = height
-                    cellFrame.origin.y += height
-                case .down:
-                    cellFrame.size.height = height
-                    cellFrame.origin.y -= height
-                case .none:
-                    break
-                }
-
-                cell.frame = cellFrame
-            }
+            })
         }
         
         self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
