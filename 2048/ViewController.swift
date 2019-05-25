@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     
     @IBAction func onRestartGame(_ sender: UIButton) {
         self.gameController.startGame()
-        self.gameBoardDataSource.update()
+        self.gameBoardDataSource.update(swipeDirection: .none)
         
         self.saveGameBoard()
     }
@@ -48,17 +48,25 @@ class ViewController: UIViewController {
     @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case .left:
-            self.gameController.swipe(to: .left)
-            self.gameBoardDataSource.update()
+            let swiped = self.gameController.swipe(to: .left)
+            if swiped {
+                self.gameBoardDataSource.update(swipeDirection: .left)
+            }
         case .right:
-            self.gameController.swipe(to: .right)
-            self.gameBoardDataSource.update()
+            let swiped = self.gameController.swipe(to: .right)
+            if swiped {
+                self.gameBoardDataSource.update(swipeDirection: .right)
+            }
         case .up:
-            self.gameController.swipe(to: .up)
-            self.gameBoardDataSource.update()
+            let swiped = self.gameController.swipe(to: .up)
+            if swiped {
+                self.gameBoardDataSource.update(swipeDirection: .up)
+            }
         case .down:
-            self.gameController.swipe(to: .down)
-            self.gameBoardDataSource.update()
+            let swiped = self.gameController.swipe(to: .down)
+            if swiped {
+                self.gameBoardDataSource.update(swipeDirection: .down)
+            }
         default:
             print(gesture.direction)
         }

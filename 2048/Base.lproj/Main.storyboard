@@ -48,11 +48,19 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fMb-LQ-xmm" secondAttribute="bottom" id="dtd-90-VQu"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fMb-LQ-xmm" secondAttribute="trailing" id="fb2-El-tem"/>
                                             <constraint firstItem="fMb-LQ-xmm" firstAttribute="centerY" secondItem="GtD-Dc-u8j" secondAttribute="centerY" id="gA2-WD-694"/>
+                                            <constraint firstItem="fMb-LQ-xmm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GtD-Dc-u8j" secondAttribute="top" id="pbI-yH-yPO"/>
                                             <constraint firstItem="fMb-LQ-xmm" firstAttribute="centerX" secondItem="GtD-Dc-u8j" secondAttribute="centerX" id="u0n-pt-8WP"/>
                                             <constraint firstItem="fMb-LQ-xmm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GtD-Dc-u8j" secondAttribute="leading" id="x3W-OF-oRq"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="dtd-90-VQu"/>
+                                                <exclude reference="pbI-yH-yPO"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="numberLabel" destination="fMb-LQ-xmm" id="dOx-Q0-Vym"/>
                                         </connections>

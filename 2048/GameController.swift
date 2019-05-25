@@ -9,7 +9,7 @@
 import Foundation
 
 enum SwipeDirection {
-    case left, right, up, down
+    case left, right, up, down, none
 }
 
 
@@ -27,7 +27,7 @@ class GameController {
         self.board.random()
     }
     
-    func swipe(to direction: SwipeDirection) {
+    func swipe(to direction: SwipeDirection) -> Bool {
         // Swipe cant realise if numbers dont move, no turn, need try another swipe
         var realized = false
         
@@ -40,8 +40,8 @@ class GameController {
             realized = swipeToUp()
         case .down:
             realized = swipeToDown()
-        @unknown default:
-            fatalError("Not Presented Swipe Direction Initialized")
+        case .none:
+            break
         }
         
         if realized {
@@ -50,6 +50,8 @@ class GameController {
                 self.endGame()
             }
         }
+        
+        return realized
     }
     
     private func isEndGame() -> Bool {
@@ -137,6 +139,7 @@ class GameController {
             // 2. check and 'concat' numbers
             for i in 0..<editedRow.count - 1 {
                 if editedRow[i] == editedRow[i+1] {
+                    // TODO: calculate high score
                     editedRow[i] *= 2
                     editedRow[i+1] = -1
                 }
@@ -154,6 +157,6 @@ class GameController {
     }
     
     func endGame() {
-        // TODO:
+        // TODO: closure from VC
     }
 }
