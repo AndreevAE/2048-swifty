@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,123 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="_048" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-rQ-6x7">
+                                <rect key="frame" x="20" y="266" width="374" height="374"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TZ8-rQ-6x7" secondAttribute="height" multiplier="1:1" id="qPy-ZV-hI9"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Cwz-sf-TsG">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="numberCell" id="GtD-Dc-u8j" customClass="GameBoardCollectionViewCell" customModule="_048" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2048" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="fMb-LQ-xmm">
+                                                    <rect key="frame" x="0.0" y="3.5" width="50" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fMb-LQ-xmm" secondAttribute="bottom" id="dtd-90-VQu"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fMb-LQ-xmm" secondAttribute="trailing" id="fb2-El-tem"/>
+                                            <constraint firstItem="fMb-LQ-xmm" firstAttribute="centerY" secondItem="GtD-Dc-u8j" secondAttribute="centerY" id="gA2-WD-694"/>
+                                            <constraint firstItem="fMb-LQ-xmm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GtD-Dc-u8j" secondAttribute="top" id="pbI-yH-yPO"/>
+                                            <constraint firstItem="fMb-LQ-xmm" firstAttribute="centerX" secondItem="GtD-Dc-u8j" secondAttribute="centerX" id="u0n-pt-8WP"/>
+                                            <constraint firstItem="fMb-LQ-xmm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GtD-Dc-u8j" secondAttribute="leading" id="x3W-OF-oRq"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="dtd-90-VQu"/>
+                                                <exclude reference="pbI-yH-yPO"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="numberLabel" destination="fMb-LQ-xmm" id="dOx-Q0-Vym"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saI-3o-xJO">
+                                <rect key="frame" x="102" y="804" width="210" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="saI-3o-xJO" secondAttribute="height" multiplier="105:19" id="KDR-JX-k0y"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="YHn-5i-1nm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Попробовать еще раз">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRestartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lrS-9x-LM9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Lose! :(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYW-gZ-vaM">
+                                <rect key="frame" x="92" y="429" width="230" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="U8p-Mv-vkT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Win! :)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MC-YX-Nv4">
+                                <rect key="frame" x="95" y="429" width="224" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="224" id="ZZE-Fd-ZGe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TZ8-rQ-6x7" secondAttribute="trailing" constant="20" id="3kd-UN-JbR"/>
+                            <constraint firstItem="1MC-YX-Nv4" firstAttribute="centerY" secondItem="TZ8-rQ-6x7" secondAttribute="centerY" id="7cr-QB-waa"/>
+                            <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="al9-Fl-Iem"/>
+                            <constraint firstItem="saI-3o-xJO" firstAttribute="centerX" secondItem="TZ8-rQ-6x7" secondAttribute="centerX" id="dJY-mN-dP9"/>
+                            <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="e05-8j-gSq"/>
+                            <constraint firstItem="1MC-YX-Nv4" firstAttribute="centerX" secondItem="TZ8-rQ-6x7" secondAttribute="centerX" id="fAi-E4-V6R"/>
+                            <constraint firstItem="TZ8-rQ-6x7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jpb-Vi-liV"/>
+                            <constraint firstItem="bYW-gZ-vaM" firstAttribute="centerY" secondItem="TZ8-rQ-6x7" secondAttribute="centerY" id="sBe-Pr-qvr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="saI-3o-xJO" secondAttribute="bottom" constant="20" id="sxr-Fi-ioV"/>
+                            <constraint firstItem="bYW-gZ-vaM" firstAttribute="centerX" secondItem="TZ8-rQ-6x7" secondAttribute="centerX" id="xHD-yX-xHo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="gameBoardCollectionView" destination="TZ8-rQ-6x7" id="6RN-2n-KQv"/>
+                        <outlet property="loseLabel" destination="bYW-gZ-vaM" id="uwp-us-FQ2"/>
+                        <outlet property="restartButton" destination="saI-3o-xJO" id="9g5-wR-kbZ"/>
+                        <outlet property="winLabel" destination="1MC-YX-Nv4" id="hFA-XQ-SQp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
         </scene>
     </scenes>
 </document>
