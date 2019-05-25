@@ -9,7 +9,7 @@
 import Foundation
 
 
-class GameBoard: NSObject, NSCoding {
+final class GameBoard: NSObject, NSCoding {
     
     let size: Int
     private var board: [Int]
@@ -55,6 +55,10 @@ class GameBoard: NSObject, NSCoding {
     
     func hasEmptyCells() -> Bool {
         return board.contains(0)
+    }
+    
+    func has2048Cell() -> Bool {
+        return board.contains(2048)
     }
     
     func hasAdjacentEqualNumbers() -> Bool {

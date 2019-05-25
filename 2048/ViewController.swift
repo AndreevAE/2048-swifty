@@ -8,12 +8,13 @@
 
 import UIKit
 
-// TODO: add animations
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     @IBOutlet weak var gameBoardCollectionView: UICollectionView!
     @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var loseLabel: UILabel!
+    @IBOutlet weak var winLabel: UILabel!
     
     private var gameBoard: GameBoard!
     private var gameBoardDataSource: GameBoardDataSource!
@@ -39,6 +40,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onRestartGame(_ sender: UIButton) {
+        self.hideLabels()
+        
         self.gameController.startGame()
         self.gameBoardDataSource.update(swipeDirection: .none)
         
@@ -101,11 +104,8 @@ private extension ViewController {
         self.view.backgroundColor = UIColor.background
         self.gameBoardCollectionView.backgroundColor = UIColor.clear
         
-        self.restartButton.layer.cornerRadius = 10.0
-        self.restartButton.layer.shadowRadius = 5.0
-        self.restartButton.layer.shadowOpacity = 0.5
-        self.restartButton.layer.shadowColor = UIColor.black.cgColor
-        self.restartButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.setupRestartButton()
+        self.setupLabels()
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
@@ -119,10 +119,43 @@ private extension ViewController {
         self.gameBoardCollectionView.collectionViewLayout = layout
     }
     
+    func setupRestartButton() {
+        self.restartButton.layer.cornerRadius = 10.0
+        self.restartButton.layer.shadowRadius = 5.0
+        self.restartButton.layer.shadowOpacity = 0.5
+        self.restartButton.layer.shadowColor = UIColor.black.cgColor
+        self.restartButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+    }
+    
+    func setupLabels() {
+        self.loseLabel.layer.cornerRadius = 10.0
+        self.loseLabel.layer.shadowRadius = 5.0
+        self.loseLabel.layer.shadowOpacity = 0.5
+        self.loseLabel.layer.shadowColor = UIColor.black.cgColor
+        self.loseLabel.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.loseLabel.isHidden = true
+        
+        self.winLabel.layer.cornerRadius = 10.0
+        self.winLabel.layer.shadowRadius = 5.0
+        self.winLabel.layer.shadowOpacity = 0.5
+        self.winLabel.layer.shadowColor = UIColor.black.cgColor
+        self.winLabel.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.winLabel.isHidden = true
+    }
+    
+    func hideLabels() {
+        self.winLabel.isHidden = true
+        self.loseLabel.isHidden = true
+    }
+    
     func setupDataSource() {
         self.wasLoading = self.loadGameBoard()
         
-        self.gameController = GameController(board: self.gameBoard)
+        self.gameController = GameController(board: self.gameBoard, winHandler: { [weak self] in
+            self?.winLabel.isHidden = false
+        }, loseHandler: { [weak self] in
+            self?.loseLabel.isHidden = false
+        })
         self.gameBoardDataSource = GameBoardDataSource(collectionView: self.gameBoardCollectionView, board: self.gameBoard)
         self.gameBoardDataSource.configure()
     }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GameBoardCollectionViewCell: UICollectionViewCell {
+final class GameBoardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var numberLabel: UILabel!
     

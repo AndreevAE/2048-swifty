@@ -13,12 +13,16 @@ enum SwipeDirection {
 }
 
 
-class GameController {
+final class GameController {
     
     private var board: GameBoard
+    private var winHandler: () -> ()
+    private var loseHandler: () -> ()
     
-    init(board: GameBoard) {
+    init(board: GameBoard, winHandler: @escaping () -> (), loseHandler: @escaping () -> ()) {
         self.board = board
+        self.winHandler = winHandler
+        self.loseHandler = loseHandler
     }
     
     func startGame() {
@@ -46,12 +50,18 @@ class GameController {
         
         if realized {
             self.board.random()
-            if self.isEndGame() {
+            if self.isWin() {
+                self.winGame()
+            } else if self.isEndGame() {
                 self.endGame()
             }
         }
         
         return realized
+    }
+    
+    private func isWin() -> Bool {
+        return board.has2048Cell()
     }
     
     private func isEndGame() -> Bool {
@@ -157,6 +167,10 @@ class GameController {
     }
     
     func endGame() {
-        // TODO: closure from VC
+        self.loseHandler()
+    }
+    
+    func winGame() {
+        self.winHandler()
     }
 }

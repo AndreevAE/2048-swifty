@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GameBoardDataSource: NSObject {
+final class GameBoardDataSource: NSObject {
     
     let numberColorDict: [Int: UIColor] = [
         0: UIColor.cellBackground_empty,

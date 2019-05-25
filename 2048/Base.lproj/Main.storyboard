@@ -83,22 +83,48 @@
                                     <action selector="onRestartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lrS-9x-LM9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Lose! :(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYW-gZ-vaM">
+                                <rect key="frame" x="92" y="429" width="230" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="U8p-Mv-vkT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Win! :)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MC-YX-Nv4">
+                                <rect key="frame" x="95" y="429" width="224" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="224" id="ZZE-Fd-ZGe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TZ8-rQ-6x7" secondAttribute="trailing" constant="20" id="3kd-UN-JbR"/>
+                            <constraint firstItem="1MC-YX-Nv4" firstAttribute="centerY" secondItem="TZ8-rQ-6x7" secondAttribute="centerY" id="7cr-QB-waa"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="al9-Fl-Iem"/>
                             <constraint firstItem="saI-3o-xJO" firstAttribute="centerX" secondItem="TZ8-rQ-6x7" secondAttribute="centerX" id="dJY-mN-dP9"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="e05-8j-gSq"/>
+                            <constraint firstItem="1MC-YX-Nv4" firstAttribute="centerX" secondItem="TZ8-rQ-6x7" secondAttribute="centerX" id="fAi-E4-V6R"/>
                             <constraint firstItem="TZ8-rQ-6x7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jpb-Vi-liV"/>
+                            <constraint firstItem="bYW-gZ-vaM" firstAttribute="centerY" secondItem="TZ8-rQ-6x7" secondAttribute="centerY" id="sBe-Pr-qvr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="saI-3o-xJO" secondAttribute="bottom" constant="20" id="sxr-Fi-ioV"/>
+                            <constraint firstItem="bYW-gZ-vaM" firstAttribute="centerX" secondItem="TZ8-rQ-6x7" secondAttribute="centerX" id="xHD-yX-xHo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="gameBoardCollectionView" destination="TZ8-rQ-6x7" id="6RN-2n-KQv"/>
+                        <outlet property="loseLabel" destination="bYW-gZ-vaM" id="uwp-us-FQ2"/>
                         <outlet property="restartButton" destination="saI-3o-xJO" id="9g5-wR-kbZ"/>
+                        <outlet property="winLabel" destination="1MC-YX-Nv4" id="hFA-XQ-SQp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
